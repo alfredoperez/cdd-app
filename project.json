@@ -90,6 +90,56 @@
       "options": {
         "buildTarget": "cdd-app:build"
       }
+    },
+    "component-test": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "cypress.config.ts",
+        "testingType": "component",
+        "skipServe": true,
+        "devServerTarget": "cdd-app:build"
+      }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "./.storybook",
+        "browserTarget": "cdd-app:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/cdd-app",
+        "configDir": "./.storybook",
+        "browserTarget": "cdd-app:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "cdd-app:build-storybook",
+        "staticFilePath": "dist/storybook/cdd-app"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "cdd-app:build-storybook:ci"
+        }
+      }
     }
   }
 }
