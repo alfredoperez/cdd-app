@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { componentWrapperDecorator } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
 
 const meta: Meta<ButtonComponent> = {
@@ -20,4 +21,17 @@ export const Secondary: Story = {
     type: 'secondary',
     label: 'Save',
   },
+};
+
+export const WithEmoji: Story = {
+  decorators: [
+    componentWrapperDecorator(
+      (story) =>
+        `<app-button type="primary" label="Fire">
+          <span>
+            🔥
+         </span>
+       </app-button>`
+    ),
+  ],
 };

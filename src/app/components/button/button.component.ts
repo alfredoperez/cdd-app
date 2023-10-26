@@ -10,10 +10,10 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-button',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
+  standalone: true,
+  imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent implements AfterViewInit {

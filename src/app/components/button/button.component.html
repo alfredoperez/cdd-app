@@ -1,6 +1,8 @@
 <button class="{{ getStyles() }}" #button>
-    <ng-container *ngIf="label">
-        <p>{{label}}</p>
-    </ng-container>
-    <ng-content></ng-content>
+    <div class="flex space-x-4  ">
+        <ng-container *ngIf="label">
+            <p>{{label}}</p>
+        </ng-container>
+        <ng-content></ng-content>
+    </div>
 </button>
